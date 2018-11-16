@@ -1,0 +1,8 @@
+/* TEAM */
+Your title: Stavros Liaskos
+Site: hello@stavrosliaskos.com
+Location: Berlin, Germany
+
+/* SITE */
+Last update: 2018/11/16
+Software: Nuxt, FontAwesome, HTML5, SCSS, JS ES6

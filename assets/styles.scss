@@ -1,0 +1,557 @@
+// @import 'debug';
+@import '../node_modules/breakpoint-sass/stylesheets/breakpoint';
+@import './normalize';
+
+/*************************************************************
+ * NUXT DEFAULTS (pre-existing definitions from nuxt itself) *
+ *************************************************************/
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/**
+ * Stretch to window
+ */
+html,
+body,
+#__nuxt,
+#__layout {
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/*************************
+ * COLOURS
+ ************************/
+$color_black: #000000;
+$color_dark_grey: #676565;
+$color_medium_grey: #959794;
+$color_light_grey: #c5c5c5;
+$color_white: #f2f2f2;
+$color_primary: #fb7724;
+$color_error: #fb1a15;
+
+$bg_dark: $color_black;
+$bg_light: $color_white;
+$bg_input_field: $color_black;
+
+$text_dark: $color_black;
+$text_dark_grey: $color_dark_grey;
+$text_light_grey: $color_light_grey;
+$text_light: $color_white;
+// #c5c5c5
+$link_dark: $color_primary;
+
+.bg-dark {
+  background: $bg_dark;
+}
+
+.bg-light {
+  background: $bg_light;
+}
+
+.text-dark {
+  color: $text_dark;
+}
+
+.text-light {
+  color: $text_light;
+}
+
+// paint everything black (even when the user tries to scroll outside of the frame (safari)
+html,
+body,
+#__nuxt,
+#__layout {
+  @extend .bg-dark;
+}
+
+/**
+ * SPACING
+ */
+$spacers: (
+  0,
+  5px,
+  10px,
+  15px,
+  20px,
+  30px,
+  40px,
+  60px,
+  100px,
+  150px,
+  200px
+) !default;
+
+$space_0: nth($spacers, 1); // 0px
+$space_1: nth($spacers, 2); // 5px
+$space_2: nth($spacers, 3); // 10px
+$space_3: nth($spacers, 4); // 15px
+$space_4: nth($spacers, 5); // 20px
+$space_5: nth($spacers, 6); // 30px
+$space_6: nth($spacers, 7); // 40px
+$space_7: nth($spacers, 8); // 60px
+$space_8: nth($spacers, 9); // 100px
+$space_9: nth($spacers, 10); // 150px
+$space_10: nth($spacers, 11); // 200px
+
+$navi_toolbar_desktop_width: 50px;
+$navi_toolbar_device_height: 50px;
+
+$footer_height: 300px;
+
+/************************
+ * MIXINS
+************************/
+// Margin and Padding
+// examples: m-b-4 (margin-bottom: $space_4), p-x-2 ( padding: 0 $space_2)
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $length in $spacers {
+    $size: index($spacers, $length) - 1;
+
+    .#{$abbrev}-#{$size} {
+      #{$prop}: $length !important;
+    }
+    .#{$abbrev}-t-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+    .#{$abbrev}-r-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+    .#{$abbrev}-b-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+    .#{$abbrev}-l-#{$size} {
+      #{$prop}-left: $length !important;
+    }
+
+    .#{$abbrev}-x-#{$size} {
+      #{$prop}-right: $length !important;
+      #{$prop}-left: $length !important;
+    }
+
+    .#{$abbrev}-y-#{$size} {
+      #{$prop}-top: $length !important;
+      #{$prop}-bottom: $length !important;
+    }
+  }
+}
+
+/*************************
+ *  TYPOGRAPHY
+ ************************/
+$font_family_default: 'Roboto Mono', monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$navi_toolbar_initial_icons_size: 2.5rem;
+$navi_toolbar_final_icons_size: 3.5rem;
+$expertise_icons_size: 5rem;
+
+// Use 62.5% trick for better rem calculations
+// https://www.sitepoint.com/understanding-and-using-rem-units-in-css/
+html,
+body {
+  font-size: 10px;
+  letter-spacing: -0.02rem;
+  word-spacing: -0.2rem;
+}
+
+h1,
+.h1 {
+  font-size: 3rem;
+}
+
+h2,
+.h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4,
+.h4 {
+  font-size: 1.9rem;
+}
+
+p,
+span,
+a,
+li,
+label,
+input,
+button {
+  font-size: 1.6rem;
+}
+
+p,
+textarea {
+  margin-bottom: $space_5;
+}
+
+input,
+textarea {
+  background: $bg_input_field;
+}
+
+button {
+  cursor: pointer;
+  border-radius: $space_1;
+  background: $color_primary;
+  border-color: $color_primary;
+}
+
+a,
+.link {
+  color: $link_dark;
+  text-decoration: none;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+label {
+  color: $text_light;
+}
+
+p {
+  color: $text_light_grey;
+  line-height: 1.9rem;
+}
+
+input {
+  height: $space_5;
+}
+
+textarea {
+  height: $space_8;
+  // Use native font stack to have user friendly input (native browser font family). <input> uses native font-family by default ;)
+  // https://atomiks.github.io/30-seconds-of-css/?utm_source=frontendfocus&utm_medium=email#system-font-stack
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/**
+ *  GRID
+ */
+// VIEWPORT: windows space when thing are changing
+$screen_viewport_xs: 0;
+$screen_viewport_sm: 576px;
+$screen_viewport_md: 768px;
+$screen_viewport_lg: 992px;
+$screen_viewport_xl: 1200px;
+
+// breakpoints (sass) : windows space when thing are changing
+$breakpoint_screen_sm: min-width $screen_viewport_sm;
+$breakpoint_screen_md: min-width $screen_viewport_md;
+$breakpoint_screen_lg: min-width $screen_viewport_lg;
+$breakpoint_screen_xl: min-width $screen_viewport_xl;
+
+$grid-gutter-width: 30px !default;
+
+.container {
+  min-height: calc(100vh - #{$footer_height});
+  width: 100%;
+  padding-right: ($grid-gutter-width / 2);
+  padding-left: ($grid-gutter-width / 2);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@include breakpoint($breakpoint_screen_md) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@include breakpoint($screen_viewport_lg) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@include breakpoint($screen_viewport_xl) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/*************************
+ * ANIMATIONS
+ ************************/
+// BORDER ANIMATION (used on hover)
+@mixin setBorderAnimation($bg_color: $color_black, $border_size: 2px, $timeOn: 1.5s, $timeOut: 0.5s) {
+  $border: $border_size solid $bg_color;
+
+  &::before,
+  &::after {
+    border-color: $bg_color;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    overflow: hidden;
+    transition: all $timeOut ease-in-out;
+  }
+
+  &::before {
+    border-left: $border;
+    border-right: $border;
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 0;
+  }
+
+  &::after {
+    border-top: $border;
+    border-bottom: $border;
+    height: 100%;
+    width: 0;
+    left: 50%;
+    top: 0;
+  }
+
+  &:hover,
+  &.active {
+    &::before,
+    &::after {
+      transition: all $timeOn ease-in-out;
+    }
+
+    &::before {
+      top: 0;
+      height: 100%;
+    }
+
+    &::after {
+      left: 0;
+      width: 100%;
+    }
+  }
+}
+
+// Width Animation (used in Burger Menu hover effect
+$width_animation_duration: 0.5s;
+@keyframes widthAnimation {
+  from {
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+  to {
+    transform: matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1);
+  }
+}
+
+$pulse_0: #fbfff9;
+$pulse_1: #ffdec4;
+$pulse_2: #f4c4d7;
+$pulse_3: #ece4f7;
+$pulse_4: #d8f6e7;
+
+@keyframes pulse-color {
+  0% {
+    color: $pulse_0;
+  }
+
+  25% {
+    color: $pulse_1;
+  }
+
+  50% {
+    color: $pulse_2;
+  }
+
+  75% {
+    color: $pulse_3;
+  }
+
+  100% {
+    color: $pulse_4;
+  }
+}
+
+@keyframes pulse-bg {
+  0% {
+    background: $pulse_0;
+  }
+
+  25% {
+    background: $pulse_1;
+  }
+
+  50% {
+    background: $pulse_2;
+  }
+
+  75% {
+    background: $pulse_3;
+  }
+
+  100% {
+    background: $pulse_4;
+  }
+}
+
+@mixin underline($color: $color_white) {
+  position: relative;
+
+  &:before {
+    // box-shadow: 0 0 8px 2px $color_white;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: $color;
+    visibility: hidden;
+    //    border-radius: $space_1;
+    transform: scaleX(0);
+    transition: .25s linear;
+  }
+
+  &:hover {
+    &:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+}
+
+// Spin animation (rotates element) (used in a letter of header's title)
+// Applying spin-wrapper to el and hovering on this will initiate the animation for the spinned child el
+.spin-wrapper {
+  .spinned {
+    transition: all 1s ease-in-out;
+    display: inline-block;
+  }
+  &:hover {
+    .spinned {
+      transform: rotate(5turn);
+    }
+  }
+}
+
+// bounce animation
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY($space_2);
+  }
+}
+
+.bounce {
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+// zoom: increase font-size on hover
+@mixin zoom($initial_font_size, $final_font_size) {
+  font-size: $initial_font_size;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    font-size: $final_font_size;
+  }
+}
+
+/************************
+ * Z-INDEX
+ ************************/
+.z-1 {
+  position: relative;
+  z-index: 100;
+}
+
+// DotSideNavi.vue
+.z-2 {
+  position: relative;
+  z-index: 75;
+}
+
+// .section, .error
+.z-3 {
+  position: relative;
+  z-index: 50;
+}
+
+/* currently not in use
+.z-4 {
+  z-index: 25;
+}
+
+.z-10 {
+  z-index: 0;
+}
+*/
+
+/************************
+ * HELPERS
+ ************************/
+.section {
+  margin-bottom: 0;
+  padding: $space_7 0;
+  border-bottom: dashed $color_light_grey;
+  width: 100%;
+  overflow: hidden;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@include breakpoint($breakpoint_screen_md) {
+  .section {
+    min-height: 100vh;
+    overflow: auto;
+    margin-bottom: $space_7;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.underline {
+  @include underline($color_light_grey);
+}
+
+// Used in any other page than index, to handle border styles and other
+.section-secondary {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  align-items: stretch; // stretch div to fit parent height
+  margin-bottom: $space_6;
+  padding: $space_7 0;
+  border-bottom: dashed $color_light_grey;
+}
+
+.hidden {
+  display: none;
+}
+
+.text-s {
+  font-size: 1.3rem;
+  line-height: 2.2rem;
+}
+
+*::selection {
+  background: $color_medium_grey;
+  color: $text_dark;
+}

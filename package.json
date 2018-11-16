@@ -1,0 +1,74 @@
+{
+  "name": "github-resume",
+  "version": "1.0.0-beta",
+  "description": "One-click github resume generator. Nuxt based, deployed with now, travis and ava for 'testing'",
+  "author": "Stavros Liaskos",
+  "homepage": "https://github-resume.now.sh/",
+  "repository": "https://github.com/stavros-liaskos/github-resume",
+  "keywords": [
+    "nuxt",
+    "stavros",
+    "liaskos",
+    "github-resume",
+    "resume"
+  ],
+  "bugs": "https://github.com/stavros-liaskos/github-resume/issues",
+  "license": "SEE LICENSE IN LICENSE",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+    "hint": "./node_modules/hint/dist/src/bin/hint.js https://github-resume.now.sh/",
+    "precommit": "yarn lint",
+    "postcommit": "yarn deploy",
+    "test": "ava --serial --verbose",
+    "deploy": "yarn lintfix && now rm -y github-resume && now && now alias",
+    "favicon-gen": "real-favicon generate faviconDescription.json faviconData.json static/favicon"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.2.0",
+    "vue-particles": "^1.0.9",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.0.1",
+    "vue-typer": "^1.2.0",
+    "vuedraggable": "^2.16.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/sitemap": "^0.1.1",
+    "ava": "^0.25.0",
+    "babel-eslint": "^10.0.1",
+    "babel-preset-env": "^1.7.0",
+    "breakpoint-sass": "^2.7.1",
+    "cli-real-favicon": "0.0.6",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-vue": "^4.0.0",
+    "fontfaceobserver": "^2.0.13",
+    "glob-all": "^3.1.0",
+    "hint": "^4.0.1",
+    "jsdom": "^12.1.0",
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.6",
+    "nuxt-sass-resources-loader": "^2.0.5",
+    "prettier": "1.14.3",
+    "purgecss-webpack-plugin": "^1.3.1",
+    "sass-loader": "^7.1.0"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}
