@@ -57,7 +57,7 @@
               v-for="(repo, index) in repos"
               :key="index"
               :href="repo.clone_url"
-              style="display: block;"
+              class="repo"
               rel="noopener noreferrer">
               <i class="fab fa-github-alt"/>
               {{ repo.name }}
@@ -65,8 +65,6 @@
           </transition-group>
         </draggable>
       </div>
-
-    <!--TODO display: block-->
     </div>
   </div>
 </template>
@@ -127,6 +125,10 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
 
   .fab {
     font-size: 1rem;
+  }
+
+  .repo {
+    display: block;
   }
 }
 
