@@ -2,39 +2,44 @@
   <div class="section z-3 about">
     <headline-animated
       :class="['title m-b-3 text-center']"
-      :content="$store.state.resume.name"/>
+      :content="$store.state.resume.name"
+      class="m-b-5"/>
+
 
     <div class="resume">
-      <div>
-        <h4>GitHub Profile</h4>
-        <div>
-          <p>On GitHub since 2016, {{ $store.state.resume.name }} is a developer
-            <span v-if="$store.state.resume.location">based in {{ $store.state.resume.location }}</span> with
-            <a :href="$store.state.resume.url + '?repositories'">{{ $store.state.resume.public_repos }}
-              public repositories
-            </a> and
-            <a :href="$store.state.resume.url + '/followers'">
-              {{ $store.state.resume.followers }}
-              followers.</a>
-          </p>
+      <div class="img-cnt">
+        <img
+          :src="$store.state.resume.avatar_url"
+          class="m-r-5"
+          alt="logo">
+
+        <div
+          v-if="$store.state.resume.website"
+          class="website m-b-5">
+          <h4>Website</h4>
+          <div><p><a :href="$store.state.resume.website">{{ $store.state.resume.website }}</a></p>
+          </div>
         </div>
       </div>
 
-      <div
-        v-if="$store.state.resume.website">
-        <h4>Website</h4>
-        <div><p><a :href="$store.state.resume.website">{{ $store.state.resume.website }}</a></p>
-        </div>
+      <div>
+        <h4>GitHub Profile</h4>
+        <p>On GitHub since 2016, {{ $store.state.resume.name }} is a developer
+          <span v-if="$store.state.resume.location">based in {{ $store.state.resume.location }}</span> with
+          <a :href="$store.state.resume.url + '?repositories'">{{ $store.state.resume.public_repos }}
+            public repositories
+          </a> and
+          <a :href="$store.state.resume.url + '/followers'">
+            {{ $store.state.resume.followers }}
+            followers.</a>
+        </p>
       </div>
 
       <div>
         <h4>About This Résumé</h4>
         <div>
-          <p>This résumé is generated automatically using public information from the developer's
-          GitHub account. The
-          repositories are ordered by popularity based on a very simple popularity heuristic that defines the
-          popularity
-          of a repository by its sum of watchers and forks. Do not hesitate to visit
+          <p>This résumé is generated automatically using the Github API from the developer's
+          GitHub account. Do not hesitate to visit
             <a
               :href="$store.state.resume.url"
               target="_blank">{{ $store.state.resume.name }}'s Github page</a>
@@ -43,15 +48,15 @@
         </div>
       </div>
 
-      <div>
+      <div v-if="repos.length">
         <h4>Repository list</h4>
+
         <draggable v-model="repos">
           <transition-group>
             <a
               v-for="(repo, index) in repos"
               :key="index"
               :href="repo.clone_url"
-              class="tooltip"
               data-tooltip="Drag and drop me!"
               style="display: block;"
               rel="noopener noreferrer">
@@ -62,7 +67,7 @@
         </draggable>
       </div>
 
-      <!--TODO display: block-->
+    <!--TODO display: block-->
     </div>
   </div>
 </template>
@@ -96,7 +101,7 @@ export default {
           return repos_API
         },
         response => {
-          console.error('An error had occurred!!')
+          this.$router.push('/error')
         }
       )
     }
@@ -108,6 +113,15 @@ export default {
 $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
 
 .resume {
+  .img-cnt > *:first-child {
+    margin-bottom: $space_5;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
   h4 {
     margin-bottom: $space_1;
   }
@@ -167,6 +181,20 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
       visibility: visible;
       transform: translateX(-50%) translateY(0);
     }
+  }
+}
+@include breakpoint($breakpoint_screen_sm) {
+  .resume {
+    img {
+    }
+
+    .website {
+      margin: 0;
+    }
+  }
+
+  .img-cnt {
+    display: flex;
   }
 }
 </style>

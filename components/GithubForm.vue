@@ -3,18 +3,20 @@
     class="form-container z-1">
 
     <div class="form-input">
-      <input
-        id="github-username"
-        v-model="name"
-        :placeholder="placeholder"
-        type="text"
-        required="required"
-        value=""
-        @keyup="hasErrorClass($event.target.value.length)">
-      <span class="form-input-line"/>
-      <label
-        :class="{ error: isError }"
-        for="github-username">{{ placeholder }}</label>
+      <form @submit.prevent="submit()">
+        <input
+          id="github-username"
+          v-model="name"
+          :placeholder="placeholder"
+          type="text"
+          required="required"
+          value=""
+          @keyup="hasErrorClass($event.target.value.length)">
+        <span class="form-input-line"/>
+        <label
+          :class="{ error: isError }"
+          for="github-username">{{ placeholder }}</label>
+      </form>
     </div>
 
     <button
@@ -47,8 +49,9 @@ export default {
         response => {
           const user_API = JSON.parse(response.bodyText)
 
-          this.resume.name = user_API.name
+          this.resume.name = user_API.name ? user_API.name : user_API.login
           this.resume.website = user_API.blog
+          this.resume.avatar_url = user_API.avatar_url
           this.resume.location = user_API.location
           this.resume.url = user_API.html_url
           this.resume.public_repos = user_API.public_repos
@@ -135,7 +138,8 @@ input {
     @extend .text-s;
 
     position: absolute;
-    top: -#{$space_3};
+    bottom: $space_4;
+    text-align: left;
     left: 0;
     opacity: 0;
     color: $color_white;
