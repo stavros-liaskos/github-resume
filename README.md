@@ -2,7 +2,7 @@
 
 > One-click github resume generator
 
-[![Build Status](https://travis-ci.com/stavros-liaskos/github-resume.svg?branch=master)](https://travis-ci.org/stavros-liaskos/github-resume) [![Greenkeeper badge](https://badges.greenkeeper.io/stavros-liaskos/stavrosliaskos.svg)](https://greenkeeper.io/) 
+[![Build Status](https://travis-ci.com/stavros-liaskos/github-resume.svg?branch=master)](https://travis-ci.com/stavros-liaskos/github-resume.svg?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/stavros-liaskos/stavrosliaskos.svg)](https://greenkeeper.io/) 
 
 ## Build Setup
 
