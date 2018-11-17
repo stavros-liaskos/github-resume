@@ -3,7 +3,9 @@ import PurgecssPlugin from 'purgecss-webpack-plugin'
 import glob from 'glob-all'
 import path from 'path'
 
-const headTitle = pkg.name.replace(/-([a-z])/g, function (g) { return ' ' + g[1]; }),
+const headTitle = pkg.name.replace(/-([a-z])/g, function(g) {
+    return ' ' + g[1]
+  }),
   headDescription = pkg.description,
   ogUrl = pkg.homepage,
   ogType = 'website',

@@ -42,6 +42,12 @@ yarn deploy
 - [Nuxt layouts](https://www.youtube.com/watch?v=YOKnSTp7d38)  
 - [Typed.js](https://www.npmjs.com/package/vue-typer#getting-started)
 
+# TODO
+- new relic
+- enable greenkeeper
+- loading spinner for fetching repos
+- submit on empty input better not to print 'not found'
+- upgrade now to version 2
 
 ## Pages
 /   
@@ -54,18 +60,18 @@ yarn deploy
 ## Ranking
 Google Audits:
 > Mobile
-> - 88 Performance 
+> - 93 Performance 
 > - 64 PWA          
 > - 100 Accessibility
 > - 100 Best Practices
-> - 82 SEO
+> - 100 SEO
 
 > Desktop
-> - 100 Performance 
+> - 97 Performance 
 > - 45 PWA          
 > - 100 Accessibility
 > - 100 Best Practices
-> - 91 SEO
+> - 100 SEO
 
 [page speed insights](https://developers.google.com/speed/pagespeed/insights/) 95 mobile / 100 desktop
 

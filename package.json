@@ -1,6 +1,6 @@
 {
   "name": "github-resume",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "One-click github resume generator. Nuxt based, deployed with now, travis and ava for 'testing'",
   "author": "Stavros Liaskos",
   "homepage": "https://github-resume.now.sh/",
