@@ -2,8 +2,8 @@ const pkg = require('./package')
 import PurgecssPlugin from 'purgecss-webpack-plugin'
 import glob from 'glob-all'
 import path from 'path'
-console.warn(pkg.name)
-const headTitle = 'Github Resume',
+
+const headTitle = pkg.name.replace(/-([a-z])/g, function (g) { return ' ' + g[1]; }),
   headDescription = pkg.description,
   ogUrl = pkg.homepage,
   ogType = 'website',

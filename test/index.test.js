@@ -39,6 +39,3 @@ test('Route / exits and render HTML with CSS applied', async t => {
 test.after.always('Shutdown Nuxt.js server', async t => {
   nuxt.close()
 })
-
-// https://github.com/babel/babel-preset-env/issues/186
-// https://github.com/vuejs/babel-preset-vue-app/issues/12#issue-274011724

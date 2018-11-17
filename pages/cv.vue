@@ -57,7 +57,6 @@
               v-for="(repo, index) in repos"
               :key="index"
               :href="repo.clone_url"
-              data-tooltip="Drag and drop me!"
               style="display: block;"
               rel="noopener noreferrer">
               <i class="fab fa-github-alt"/>
@@ -131,58 +130,6 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
   }
 }
 
-.tooltip {
-  position: relative;
-
-  &:after {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    content: attr(data-tooltip);
-    padding: 6px 10px;
-    top: 1.4em;
-    left: 50%;
-    transform: translateX(-50%) translateY(-2px);
-    background: grey;
-    color: white;
-    white-space: nowrap;
-    z-index: 2;
-    border-radius: 2px;
-    transition: opacity 0.2s $cubic, transform 0.2s $cubic;
-  }
-
-  &:before {
-    content: '';
-    width: 0;
-    height: 0;
-    border-left: solid 5px transparent;
-    border-right: solid 5px transparent;
-    border-bottom: solid 5px grey;
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    transform: translateX(-50%) translateY(-2px);
-    top: -40px;
-    left: 200px;
-    transition: opacity 0.2s $cubic, transform 0.2s $cubic;
-    z-index: 3;
-  }
-
-  &:hover {
-    &:before {
-      display: block;
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-    &:after {
-      display: block;
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-  }
-}
 @include breakpoint($breakpoint_screen_sm) {
   .resume {
     img {
