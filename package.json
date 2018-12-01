@@ -50,7 +50,7 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-prettier": "3.0.0",
     "eslint-plugin-vue": "^4.0.0",
-    "fontfaceobserver": "^2.0.13",
+    "fontfaceobserver": "^2.1.0",
     "glob-all": "^3.1.0",
     "hint": "^4.0.1",
     "jsdom": "^12.1.0",
