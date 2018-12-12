@@ -52,7 +52,7 @@
     "eslint-plugin-vue": "^4.0.0",
     "fontfaceobserver": "^2.0.13",
     "glob-all": "^3.1.0",
-    "hint": "^4.0.1",
+    "hint": "^4.1.1",
     "jsdom": "^12.1.0",
     "node-sass": "^4.9.3",
     "nodemon": "^1.18.6",
