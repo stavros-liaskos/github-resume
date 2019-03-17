@@ -27,6 +27,7 @@
     "postcommit": "yarn deploy",
     "test": "ava --serial --verbose",
     "deploy": "yarn lintfix && now rm -y github-resume && now && now alias",
+    "now-build": "nuxt build --spa",
     "favicon-gen": "real-favicon generate faviconDescription.json faviconData.json static/favicon"
   },
   "dependencies": {

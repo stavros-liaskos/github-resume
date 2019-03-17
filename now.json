@@ -1,12 +1,14 @@
 {
   "name": "github-resume",
-  "version": 1,
-  "alias": ["github-resume"],
+  "version": 2,
+  "alias": [
+    "github-resume"
+  ],
   "public": true,
-  "scale": {
-    "bru1": {
-      "min": 1,
-      "max": 3
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
     }
-  }
+  ]
 }
