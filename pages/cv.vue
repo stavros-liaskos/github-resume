@@ -8,12 +8,12 @@
 
     <div class="resume">
       <div class="img-cnt">
-        <img 
+        <img
           :src="$store.state.resume.avatar_url"
-          class="m-r-5" 
+          class="m-r-5"
           alt="logo" >
 
-        <div 
+        <div
           v-if="$store.state.resume.website"
           class="website m-b-5">
           <h4>Website</h4>
@@ -124,6 +124,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/styles';
 $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
 
 .resume {

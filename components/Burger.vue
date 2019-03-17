@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     :class="{ active: isNavOpen }"
     class="burger-menu"
     @click="clickHandler()"
@@ -41,6 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/styles';
 // Burger menu variables
 $burger_menu_width: $space_5;
 $burger_menu_height: 24px;

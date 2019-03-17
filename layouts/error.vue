@@ -26,6 +26,7 @@ export default {
 
 <style lang="scss">
 @import '../assets/styles';
+@import '../assets/styles';
 
 // add properties to the parent .container (note that "scoped" is removed from <style>)
 .container {

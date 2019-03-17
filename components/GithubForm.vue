@@ -77,6 +77,7 @@ export default {
 
 <style lang="scss">
 @import '../assets/styles';
+@import '../assets/styles';
 
 .form-container {
   width: 100%;

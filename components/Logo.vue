@@ -33,6 +33,7 @@
 </template>
 
 <style lang="scss">
+@import '../assets/styles';
 .logo {
   fill: $text_light;
 }

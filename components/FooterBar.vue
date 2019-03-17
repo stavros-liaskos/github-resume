@@ -36,6 +36,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/styles';
 .footer {
   min-height: unset !important; // unset it from .container
   height: $footer_height;

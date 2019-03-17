@@ -24,6 +24,7 @@
 </template>
 
 <style lang="scss">
+@import '../assets/styles';
 #particles-js {
   position: fixed;
   top: 0;

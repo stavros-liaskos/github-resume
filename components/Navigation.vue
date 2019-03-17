@@ -1,6 +1,6 @@
 <template>
-  <div 
-    :class="{ active: isNavOpen}" 
+  <div
+    :class="{ active: isNavOpen}"
     class="navigation z-1">
     <navi-toolbar/>
 
@@ -14,7 +14,7 @@
         <ul class="menu-list">
 
           <li class="menu-item">
-            <nuxt-link 
+            <nuxt-link
               class="item-link text-light underline h1 flip"
               to="/"
               @click.native="toggleMenu()">Home
@@ -22,7 +22,7 @@
           </li>
 
           <li class="menu-item">
-            <nuxt-link 
+            <nuxt-link
               class="item-link text-light underline h1 flip"
               to="/about"
               @click.native="toggleMenu()">About
@@ -30,7 +30,7 @@
           </li>
 
           <li class="menu-item">
-            <nuxt-link 
+            <nuxt-link
               class="item-link text-light underline h1 flip"
               to="/contact"
               @click.native="toggleMenu()">Contact
@@ -75,6 +75,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/styles';
 $navi_slide_out_time: 0.8s;
 
 .navigation {

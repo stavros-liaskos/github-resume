@@ -8,8 +8,8 @@
       Do you want to tell me something amazing?
       Do you have any questions?
       Don't hesitate to contact me at:
-      <a 
-        href="mailto:hello@stavrosliaskos.com" 
+      <a
+        href="mailto:hello@stavrosliaskos.com"
         target="_blank">hello@stavrosliaskos.com</a>
     </p>
 
@@ -38,6 +38,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/styles';
 .contact {
   display: flex;
   justify-content: center;

@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/styles';
 .vue-typer {
   display: block;
   @extend .h1;
