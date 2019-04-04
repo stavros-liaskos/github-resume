@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "cross-env": "^5.2.0",
-    "nuxt": "^2.2.0",
+    "nuxt": "^2.6.1",
     "vue-particles": "^1.0.9",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
