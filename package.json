@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@nuxtjs/sitemap": "^0.1.1",
-    "ava": "^0.25.0",
+    "ava": "^2.4.0",
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
     "breakpoint-sass": "^2.7.1",
