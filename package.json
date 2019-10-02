@@ -31,7 +31,7 @@
     "favicon-gen": "real-favicon generate faviconDescription.json faviconData.json static/favicon"
   },
   "dependencies": {
-    "cross-env": "^5.2.0",
+    "cross-env": "^6.0.3",
     "nuxt": "^2.2.0",
     "vue-particles": "^1.0.9",
     "vue-resource": "^1.5.1",
